@@ -3,6 +3,20 @@ const app=express()
 const port=5000
 require('./config/db')//db connection
 
+//express session config
+const session=require('express-session')
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: false
+}))
+
+//passport set up
+const passport=require('passport')
+require('./config/passport-local')
+app.use(passport.initialize())
+app.use(passport.session())
+
 // ejs config
 const expressLayouts=require('express-ejs-layouts')
 app.set('view engine','ejs')

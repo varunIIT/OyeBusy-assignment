@@ -1,3 +1,23 @@
-<body>
-    <div>login here</div>
+<link rel="stylesheet" href="/css/home.css">
+<body style="height:100%;">
+    <div class="container">
+        <div id="register-wraper" class="p-4">
+            <h1 class="text-center"><i class="fas fa-sign-in-alt"></i> Register</h1>
+            <form action="/api/users/create-session" method="POST">
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput2" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleFormControlInput4" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <div class="d-grid gap-2 mb-3">
+                    <button class="btn btn-danger" type="submit">Login</button>
+                  </div>
+                  <div class="mb-3">Don't have an account? <a href="/">Register</a></div>
+            </form>
+        </div>
+    </div>
+    
 </body>

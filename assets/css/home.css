@@ -1,7 +1,7 @@
     #register-wraper{
         width: 40%;
         border: solid lightgrey 1px;
-        height: 92%;
+        height: auto;
     }
     .container{
         display: flex;

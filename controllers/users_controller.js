@@ -19,3 +19,6 @@ module.exports.create=async(req,res)=>{
 module.exports.login=(req,res)=>{
     res.render('login')
 }
+module.exports.createSession=(req,res)=>{
+  res.redirect('/main')
+}
