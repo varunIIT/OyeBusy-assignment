@@ -16,6 +16,7 @@ const passport=require('passport')
 require('./config/passport-local')
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(passport.setAuthenticatedUser)
 
 // ejs config
 const expressLayouts=require('express-ejs-layouts')
