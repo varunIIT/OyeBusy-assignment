@@ -1,0 +1,12 @@
+    #register-wraper{
+        width: 40%;
+        border: solid lightgrey 1px;
+        height: 92%;
+    }
+    .container{
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        height: 100%;
+    }
+    
