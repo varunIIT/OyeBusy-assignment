@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<style>
+     a, a:hover, a:focus, a:active {
+     text-decoration: none;
+     color: inherit;
+ }
+ #navbar{
+     display: flex;
+     justify-content: space-between;
+     border: 1px lightgrey solid;
+     align-items: center;
+ }
+</style>
+</head>
+<body>
+    <div class="container">
+     <div id="navbar" class="my-3" >
+         <div>
+             <a href="#" class="p-3">MY BAND</a>
+             <a href="#">Add Band</a>
+        </div>
+        <div>
+            <div class="dropdown p-2 pe-3">
+                <div id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="fas fa-user-circle fa-2x"></i>
+                </div>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="/api/users/logout">Logout</a></li>
+                </ul>
+              </div>
+        </div>
+     </div>
+     <div id="bands">
+         <%-body%>
+     </div>
+</body>
+</html>

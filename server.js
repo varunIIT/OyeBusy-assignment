@@ -21,6 +21,7 @@ app.use(passport.setAuthenticatedUser)
 // ejs config
 const expressLayouts=require('express-ejs-layouts')
 app.set('view engine','ejs')
+app.set('layout', 'layoutsA', 'layoutsB');
 app.use(expressLayouts)
 
 //body parser

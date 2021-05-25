@@ -20,7 +20,11 @@ const userSchema=new Schema({
     password:{
         type:String,
         required:true
-    }
-})
+    },
+    bands:[{
+        type:mongoose.Types.ObjectId,
+        ref:'Band'
+    }]
+},{timestamps:true})
 const User=mongoose.model('User',userSchema)
 module.exports=User

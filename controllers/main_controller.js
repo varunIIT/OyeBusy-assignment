@@ -1,3 +1,3 @@
 module.exports.display=(req,res)=>{
-    res.render('main-page')
+    res.render('main-page',{layout:'layoutB'})
 }

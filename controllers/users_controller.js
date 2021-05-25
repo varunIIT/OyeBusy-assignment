@@ -17,8 +17,12 @@ module.exports.create=async(req,res)=>{
 
 }
 module.exports.login=(req,res)=>{
-    res.render('login')
+    res.render('login',{layout:'layoutA'})
 }
 module.exports.createSession=(req,res)=>{
   res.redirect('/main')
+}
+module.exports.logout=(req,res)=>{
+  req.logout()
+  res.redirect('/api/users/login')
 }
