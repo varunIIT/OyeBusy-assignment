@@ -6,5 +6,7 @@ route.post('/create',userController.create)
 route.get('/login',userController.login)
 route.post('/create-session',passport.authenticate('local',{failureRedirect:'/api/users/login'}),userController.createSession)
 route.get('/logout',userController.logout)
+route.get('/:uid/bands',userController.userBands)
+route.post('/:uid/bands',userController.createBands)
 
 module.exports=route
