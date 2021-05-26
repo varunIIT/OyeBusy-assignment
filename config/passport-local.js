@@ -46,5 +46,10 @@ passport.setAuthenticatedUser=(req,res,next)=>{
     if(req.isAuthenticated()){
         res.locals.user=req.user//setting res.locals for access of user data for views
     }
+    res.locals.otpStatus='Send OTP'
+    if(req.session.otp){
+        res.locals.otpBool=1;
+        res.locals.otpStatus='Verify-OTP'
+    }
     next()
 }

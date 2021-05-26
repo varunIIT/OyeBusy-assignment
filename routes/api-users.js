@@ -6,5 +6,8 @@ route.get('/:uid/bands',apiUserController.userBands)
 
 route.post('/:uid/bands',apiUserController.createBands)
 route.post('/',apiUserController.createUser)
+route.post('/verify-otp',apiUserController.verifyOtp)
 
+route.put('/reset-pswd',apiUserController.resetPass)
+route.put('/send-otp',apiUserController.sendOtp)
 module.exports=route

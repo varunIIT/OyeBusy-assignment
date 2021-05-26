@@ -1,5 +1,3 @@
-const User=require('../models/user')
-const Band=require('../models/band')
 const fetch = require('node-fetch')
 module.exports.signUp=async(req,res)=>{
     fetch('http://localhost:5000/api/users/', {
@@ -10,6 +8,9 @@ module.exports.signUp=async(req,res)=>{
     .then(response =>response.json())
     .then(data=>{
       //console.log(data)
+      if(!data){
+        res.redirect('back')
+      }
       res.redirect('/user/sign-in')
     })
     .catch(err=>{console.log(err)})
@@ -51,4 +52,7 @@ module.exports.createNewBand=(req,res)=>{
     res.redirect('/user/bands')
   })
   .catch(err=>{console.log(err)})
+}
+module.exports.resetPassDisplay=(req,res)=>{
+  res.render('reset-pass',{layout:'layoutA'})
 }
