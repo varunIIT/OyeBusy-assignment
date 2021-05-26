@@ -3,10 +3,11 @@
     <div class="container">
         <div id="register-wraper" class="p-4">
             <h1 class="text-center"><i class="fas fa-sign-in-alt"></i> Reset Password</h1>
-            <form action="/user/create-session" method="POST">
+          
+            <form action="/user/<%if (locals.email){%>verify-otp<%}else{%>send-otp<%}%>" method="GET">
                   <div class="mb-3">
                     <label for="exampleFormControlInput2" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email">
+                    <input type="email" class="form-control" name="email"  value=<%=locals.email%>   <%if (locals.email){%>readonly<%}%>>
                   </div>
                  <%if (locals.otpBool){%>
                     <div class="mb-3">

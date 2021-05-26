@@ -52,7 +52,12 @@ module.exports.createUser=async(req,res)=>{
 }
 module.exports.resetPass=async(req,res)=>{
   try{
-      const user=await User.findByIdAndUpdate(req.user.id,{password:req.body.password})
+    if(req.body.password!=req.body.confirmPassword){
+      return res.json(null)
+    }
+      const user=await User.findOne({email:req.body.email})
+      user.password=req.body.password
+      user.save()
       res.status(200).json(user)
   }
   catch(err){
@@ -61,13 +66,13 @@ module.exports.resetPass=async(req,res)=>{
 }
 module.exports.sendOtp=async(req,res)=>{
   try{
+    //console.log(req.body.email)
     const user=await User.findOne({email:req.body.email})
     if(!user){
       return res.json(null)
     }
     const otp=sendOtp(req.body.email)
-    req.session.otp=otp
-    res.send('sent')
+    res.json({otp:otp})
   }
   catch(err){
     console.log(err)
@@ -75,11 +80,9 @@ module.exports.sendOtp=async(req,res)=>{
 }
 module.exports.verifyOtp=async(req,res)=>{
   try{
-    if(req.body.otp==req.session.otp){
-      req.session.otp=null;
+    if(req.body.realOtp==req.body.inputOtp){
       return res.json(true)
     }
-    req.session.otp=null;
     return res.json(false)
   }
   catch(err){

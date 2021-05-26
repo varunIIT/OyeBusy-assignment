@@ -43,6 +43,8 @@ passport.checkAuthentication=(req,res,next)=>{//protecting routes if user is not
     
 }
 passport.setAuthenticatedUser=(req,res,next)=>{
+    //console.log(req.session)
+    res.locals.email=''
     if(req.isAuthenticated()){
         res.locals.user=req.user//setting res.locals for access of user data for views
     }
@@ -50,6 +52,11 @@ passport.setAuthenticatedUser=(req,res,next)=>{
     if(req.session.otp){
         res.locals.otpBool=1;
         res.locals.otpStatus='Verify-OTP'
+    }
+    if(req.session.email){
+        res.locals.email=req.session.email
+        req.session.fixedEmail=req.session.email
+        req.session.email=null
     }
     next()
 }

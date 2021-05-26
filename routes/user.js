@@ -10,4 +10,8 @@ route.get('/bands',passport.checkAuthentication, userController.displayBands)
 route.get('/new-band',passport.checkAuthentication,userController.newBand)
 route.post('/new-band',passport.checkAuthentication,userController.createNewBand)
 route.get('/reset-password',userController.resetPassDisplay)
+route.get('/send-otp',userController.sendOtp)
+route.get('/verify-otp',userController.verifyOtp)
+route.get('/change-password',userController.changePasswordDisplay)
+route.post('/change-password',userController.changePassword)
 module.exports=route

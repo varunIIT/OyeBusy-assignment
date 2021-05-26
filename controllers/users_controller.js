@@ -56,3 +56,60 @@ module.exports.createNewBand=(req,res)=>{
 module.exports.resetPassDisplay=(req,res)=>{
   res.render('reset-pass',{layout:'layoutA'})
 }
+module.exports.sendOtp=(req,res)=>{
+  //console.log(req.query)
+  fetch(`http://localhost:5000/api/users/send-otp`, {
+      method: 'put',
+      body:JSON.stringify(req.query),
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response =>response.json())
+  .then(data=>{
+    //console.log(data)
+    if(!data){
+      return res.redirect('/user/reset-password')
+    }
+    req.session.email=req.query.email
+    req.session.otp=data.otp
+    res.redirect('/user/reset-password')
+  })
+  .catch(err=>{console.log(err)})
+}
+module.exports.verifyOtp=(req,res)=>{
+  const otpMatch={realOtp:req.session.otp,inputOtp:req.query.otp}
+  fetch(`http://localhost:5000/api/users/verify-otp`, {
+      method: 'post',
+      body:JSON.stringify(otpMatch),
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response =>response.json())
+  .then(data=>{
+    //console.log(data)
+    if(!data){
+      req.session.otp=null
+      return res.redirect('/user/reset-password')
+    }
+    req.session.otp=null
+    res.redirect('/user/change-password')
+  })
+  .catch(err=>{console.log(err)})
+}
+module.exports.changePasswordDisplay=(req,res)=>{
+  res.render('change-password',{layout:'layoutA',fixedEmail:req.session.fixedEmail})
+}
+module.exports.changePassword=(req,res)=>{
+  fetch(`http://localhost:5000/api/users/reset-pswd `, {
+      method: 'put',
+      body:JSON.stringify(req.body),
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response =>response.json())
+  .then(data=>{
+    //console.log(data)
+    if(!data){
+      return res.redirect('/user/change-password')
+    }
+    res.redirect('/user/sign-in')
+  })
+  .catch(err=>{console.log(err)})
+}
