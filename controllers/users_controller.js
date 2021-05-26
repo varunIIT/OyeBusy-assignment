@@ -1,23 +1,22 @@
 const User=require('../models/user')
 const Band=require('../models/band')
-module.exports.create=async(req,res)=>{
-  try{
-    if(req.body.password!=req.body.confirmPassword){
-        return res.redirect('back')
-    }
-    let user=await User.findOne({email:req.body.email})
-    if(user){
-     return res.redirect('back')
-    }
-    user=await User.create(req.body)
-    res.redirect('/api/users/login')
-  }
-  catch(err){
-      console.log(err)
-  }
+const fetch = require('node-fetch')
+const { response } = require('express')
+module.exports.signUp=async(req,res)=>{
+    fetch('http://localhost:5000/api/users/', {
+        method: 'post',
+        body:    JSON.stringify(req.body),
+        headers: { 'Content-Type': 'application/json' },
+    })
+    .then(response =>response.json())
+    .then(data=>{
+      //console.log(data)
+      res.redirect('/user/sign-in')
+    })
+    .catch(err=>{console.log(err)})
 
 }
-module.exports.login=(req,res)=>{
+module.exports.signIn=(req,res)=>{
     res.render('login',{layout:'layoutA'})
 }
 module.exports.createSession=(req,res)=>{
@@ -26,26 +25,4 @@ module.exports.createSession=(req,res)=>{
 module.exports.logout=(req,res)=>{
   req.logout()
   res.redirect('/api/users/login')
-}
-module.exports.userBands=async (req,res)=>{
-  try{
-    const user=await User.findById(req.params.uid).populate('bands')
-    res.status(200).json(user.bands)
-
-  }
-  catch(err){
-    console.log(err)
-  }
-}
-module.exports.createBands=async (req,res)=>{
-  try{
-    const band=await Band.create(req.body)
-    const user=await User.findById(req.params.uid)
-    user.bands.push(band._id)
-    user.save()
-    res.status(201).json(band)
-  }
-  catch(err){
-    console.log(err)
-  }
 }
