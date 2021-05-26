@@ -7,5 +7,6 @@ route.get('/sign-in',userController.signIn)
 route.post('/create-session',passport.authenticate('local',{failureRedirect:'/user/login'}),userController.createSession)
 route.get('/logout',userController.logout)
 route.get('/bands',passport.checkAuthentication, userController.displayBands)
-
+route.get('/new-band',passport.checkAuthentication,userController.newBand)
+route.post('/new-band',passport.checkAuthentication,userController.createNewBand)
 module.exports=route

@@ -39,7 +39,7 @@ passport.checkAuthentication=(req,res,next)=>{//protecting routes if user is not
         return next()
     }
     
-    res.redirect('/api/users/login')// redirecting to sign-in page if user is not authenticated and trying to request other endpoints
+    res.redirect('/user/sign-in')// redirecting to sign-in page if user is not authenticated and trying to request other endpoints
     
 }
 passport.setAuthenticatedUser=(req,res,next)=>{

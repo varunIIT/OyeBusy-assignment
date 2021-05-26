@@ -1,0 +1,34 @@
+<link rel="stylesheet" href="/css/add-band.css">
+<div id="add-band-wraper">
+    <div id="add-band-div" class="p-4">
+      <h1 class="text-center"><i class="far fa-plus-square"></i> Add Band</h1>
+    <form action="/user/new-band" method="POST">
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Description</label>
+            <input type="text" class="form-control" name="description">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Origin</label>
+            <input type="text" class="form-control" name="origin">
+          </div>
+          <div class=" mb-3">
+            <label class="form-label" for="inputGroupSelect01">Rating</label>
+            <select class="form-select" name="rating">
+              <option value="5">5</option>
+              <option value="4">4</option>
+              <option value="3">3</option>
+              <option value="2">2</option>
+              <option value="1">1</option>
+            </select>
+          </div>
+           <div class="mb-3">
+            <button class="btn btn-primary" type="submit">Back</button>
+            <button class="btn btn-danger" type="submit" style="float: right;">Add</button>
+           </div>
+    </form>
+    </div>
+</div>

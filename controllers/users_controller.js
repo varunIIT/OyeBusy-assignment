@@ -36,3 +36,19 @@ module.exports.displayBands=(req,res)=>{
   })
   .catch(err=>{console.log(err)})
 }
+module.exports.newBand=(req,res)=>{
+  res.render('add-band',{layout:'layoutB'})
+}
+module.exports.createNewBand=(req,res)=>{
+  fetch(`http://localhost:5000/api/users/${req.user.id}/bands`, {
+      method: 'post',
+      body:JSON.stringify(req.body),
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response =>response.json())
+  .then(data=>{
+    //console.log(data)
+    res.redirect('/user/bands')
+  })
+  .catch(err=>{console.log(err)})
+}

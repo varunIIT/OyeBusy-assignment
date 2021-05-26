@@ -1,0 +1,8 @@
+#add-band-wraper{
+    display: flex;
+    justify-content: center;
+}
+#add-band-div{
+    border: 1px lightgrey solid;
+    width: 40%;
+}
