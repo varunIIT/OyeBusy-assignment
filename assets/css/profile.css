@@ -1,0 +1,8 @@
+#profile-wraper{
+    display: flex;
+    justify-content: center;
+}
+#profile-inside-div{
+    border: 1px lightgrey solid;
+    width: 40%;
+}

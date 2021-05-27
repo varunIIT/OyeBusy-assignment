@@ -113,3 +113,22 @@ module.exports.changePassword=(req,res)=>{
   })
   .catch(err=>{console.log(err)})
 }
+module.exports.profileDisplay=(req,res)=>{
+  res.render('profile',{layout:'layoutB'})
+}
+module.exports.updateProfile=(req,res)=>{
+  fetch(`http://localhost:5000/api/users/user/${req.user.id}`, {
+      method: 'put',
+      body:JSON.stringify(req.body),
+      headers: { 'Content-Type': 'application/json' },
+  })
+  .then(response =>response.json())
+  .then(data=>{
+    //console.log(data)
+    if(!data){
+     return res.json(null)
+    }
+    res.redirect('/user/bands')
+  })
+  .catch(err=>{console.log(err)})
+}

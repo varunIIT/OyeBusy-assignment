@@ -14,4 +14,7 @@ route.get('/send-otp',userController.sendOtp)
 route.get('/verify-otp',userController.verifyOtp)
 route.get('/change-password',userController.changePasswordDisplay)
 route.post('/change-password',userController.changePassword)
+route.get('/profile',userController.profileDisplay)
+route.post('/update-profile',userController.updateProfile)
+
 module.exports=route

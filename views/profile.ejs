@@ -1,0 +1,28 @@
+<link rel="stylesheet" href="/css/profile.css">
+<div id="profile-wraper">
+    <div id="profile-inside-div" class="p-4">
+      <h1 class="text-center"><i class="fas fa-user-circle fa-2x"></i> profile</h1>
+    <form action="/user/update-profile" method="POST">
+          <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Organisation</label>
+            <input type="text" class="form-control" name="organisation">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" name="dob">
+          </div>
+           <div class="mb-3">
+            <a href="/user/bands" class="btn btn-primary">Back</a>
+            <button class="btn btn-danger" type="submit" style="float: right;">Save</button>
+           </div>
+    </form>
+    </div>
+</div>

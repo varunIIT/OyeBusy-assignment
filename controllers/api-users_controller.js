@@ -89,3 +89,12 @@ module.exports.verifyOtp=async(req,res)=>{
     console.log(err)
   }
 }
+module.exports.updateProfile=async (req,res)=>{
+  try{
+    const user=await User.findByIdAndUpdate(req.params.uid,req.body)
+    return res.json(user)
+  }
+  catch(err){
+    console.log(err)
+  }
+}
