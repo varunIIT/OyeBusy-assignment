@@ -11,4 +11,6 @@ route.post('/verify-otp',apiUserController.verifyOtp)
 route.put('/reset-pswd',apiUserController.resetPass)
 route.put('/send-otp',apiUserController.sendOtp)
 route.put('/user/:uid',apiUserController.updateProfile)
+
+route.delete('/:uid/bands/band/:bid',apiUserController.deleteBand)
 module.exports=route

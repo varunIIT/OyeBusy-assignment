@@ -98,3 +98,13 @@ module.exports.updateProfile=async (req,res)=>{
     console.log(err)
   }
 }
+module.exports.deleteBand=async(req,res)=>{
+  try{
+    const band=await Band.findByIdAndDelete(req.params.bid)
+    const user=await User.findByIdAndUpdate(req.params.uid,{$pull:{bands:band._id}})
+    res.json({band,user})
+  }
+  catch(err){
+    console.log(err)
+  }
+}
