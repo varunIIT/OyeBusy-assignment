@@ -23,7 +23,7 @@ const userSchema=new Schema({
     },
     bands:[{
         type:mongoose.Types.ObjectId,
-        ref:'Band'
+        ref:'Band'//relation to Band model
     }]
 },{timestamps:true})
 const User=mongoose.model('User',userSchema)

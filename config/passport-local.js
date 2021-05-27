@@ -3,18 +3,18 @@ const LocalStrategy = require('passport-local').Strategy
 const User=require('../models/user')
 
 passport.use(new LocalStrategy({
-    usernameField: 'email',
+    usernameField: 'email',//username feild as email
 },
     function (email, password, done) {
         User.findOne({ email: email }, function (err, user) {
             if (err) { return done(err); }
-            if (!user) {
+            if (!user) {//if no user with this email exists
                 return done(null, false);
             }
-            if (user.password != password) {
+            if (user.password != password) {//matching password
                 return done(null, false);
             }
-            return done(null, user);
+            return done(null, user);// if everything is correct
         });
     }
 ));

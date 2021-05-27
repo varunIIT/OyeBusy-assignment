@@ -3,21 +3,21 @@ var nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        user: '2019ucs0103@iitjammu.ac.in',
-        pass: '31-11-2000'
+        user: '2019ucs0103@iitjammu.ac.in',//sender email
+        pass: require('./pass').pass//sender pass 
     }
 });
 const genOtp=()=>{
-    let otp=parseInt(Math.random()*10)+4000
+    let otp=parseInt(Math.random()*10)+4000 //random otp generate
     return otp;
 }
 const sendOtp = (target) => {
 
     var mailOptions = {
         from: '2019ucs0103@iitjammu.ac.in',
-        to: target,
+        to: target,// taret person whom otp has to be send
         subject: 'My Bands-Reset Password OTP',
-        text: JSON.stringify(genOtp())
+        text: JSON.stringify(genOtp())//otp
     };
 
     transporter.sendMail(mailOptions, function (error, info) {

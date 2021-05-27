@@ -13,7 +13,8 @@ app.use(session({
 
 //passport set up
 const passport=require('passport')
-require('./config/passport-local')
+require('./config/passport-local')//passport configuration 
+//initializing passport
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(passport.setAuthenticatedUser)
@@ -21,16 +22,16 @@ app.use(passport.setAuthenticatedUser)
 // ejs config
 const expressLayouts=require('express-ejs-layouts')
 app.set('view engine','ejs')
-app.set('layout', 'layoutsA', 'layoutsB');
-app.use(expressLayouts)
+app.set('layout', 'layoutsA', 'layoutsB');// seting layoutA and layoutB
+app.use(expressLayouts)//layout middleware
 
 //body parser
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
 
-app.use(express.static(__dirname+'/assets'))
+app.use(express.static(__dirname+'/assets'))// making assets directory accessible
 
-app.use('/',require('./routes/index'))
+app.use('/',require('./routes/index'))//initiating api routes
 
 app.listen(port,()=>{
     console.log(`listening at http://localhost:${port}`)
